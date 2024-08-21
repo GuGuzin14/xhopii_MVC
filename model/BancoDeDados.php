@@ -8,9 +8,12 @@ class BancoDeDados{
 
 
 public function __construct($host, $login, $senha, $dataBase){
-    $this->host = $host;
+    $this->host = $host; //Exemplo: 127.0.0.1
+
     $this->login = $login;
+
     $this->senha = $senha;
+    
     $this->dataBase = $dataBase;
 }
 
