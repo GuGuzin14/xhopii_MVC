@@ -43,7 +43,7 @@
             <?php
                 #CORRETO COM USO DO CONTROLADOR
                 $controlador = new Controlador();
-                echo $controlador->visualizarProduto();
+                echo $controlador->visualizarProdutos();
             ?>
         </section>
     </section>

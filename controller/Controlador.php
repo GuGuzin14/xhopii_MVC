@@ -17,7 +17,7 @@ class Controlador{
     }
     */
 
-    public function cadastrarProduto($nome,$fabricante,$descricao,$valor){
+    public function inserirProduto($nome,$fabricante,$descricao,$valor){
         $produto = new Produto($nome,$fabricante,$descricao,$valor);
         $this->bancoDeDados->inserirProduto($produto);
     }
@@ -33,6 +33,14 @@ class Controlador{
             "</section>";
 
         }
+    }
+
+    function inserirFuncionario($cpf, $nome, $sobrenome, $dataNasc, $telefone, $email, $salario){
+    
+        $conexao = conectarBD();
+        $consulta = "INSERT INTO funcionario (cpf, nome, sobrenome, dataNascimento, telefone, email, salario) 
+                     VALUES ('$cpf','$nome','$sobrenome','$dataNasc','$telefone','$email','$salario')";
+        mysqli_query($conexao,$consulta);
     }
     
 }
