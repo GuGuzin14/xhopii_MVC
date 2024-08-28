@@ -67,7 +67,7 @@ if (!empty($_POST['inputNomeProd']) && !empty($_POST['inputFabricanteProd']) &&
     $descricao = $_POST['inputDescricaoProd'];
     $valor = $_POST['inputValorProd'];
 
-    $controlador->cadastrarProduto($nome, $fabricante, $descricao, $valor);
+    $controlador->inserirProduto($nome, $fabricante, $descricao, $valor);
     
     header('Location:../view/cadastroProduto.php');
     exit();

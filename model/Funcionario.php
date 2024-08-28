@@ -5,16 +5,16 @@ class Funcionario{
     protected $nome;
     protected $sobrenome;
     protected $cpf;
-    protected $data;
+    protected $dataNasc;
     protected $telefone;
     protected $email;
     protected $salario;
 
-    public function __construct($nome, $sobrenome, $cpf, $data, $telefone, $email, $salario){
+    public function __construct($cpf,$nome, $sobrenome, $dataNasc, $telefone, $email, $salario){
+        $this->cpf = $cpf;
         $this->nome = $nome;
         $this->sobrenome = $sobrenome;
-        $this->cpf = $cpf;
-        $this->data = $data;
+        $this->data = $dataNasc;
         $this->telefone = $telefone;
         $this->email = $email;
         $this->salario = $salario;
@@ -26,8 +26,6 @@ class Funcionario{
     public function setSobrenome($sobrenome) {
         $this->sobrenome = $sobrenome;
     }
-
-
     public function getNome(){
         return $this->nome;
     }
@@ -37,8 +35,14 @@ class Funcionario{
     public function getCpf(){  
         return $this->cpf;
     }
+    public function setCpf($cpf) {
+        $this->cpf = $cpf;
+    }
     public function getData(){
-        return $this->data;
+        return $this->dataNasc;
+    }
+    public function setData($data){
+        $this->data = $data;
     }
     
     public function setTelefone($telefone) {

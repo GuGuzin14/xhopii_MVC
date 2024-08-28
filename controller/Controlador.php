@@ -2,6 +2,7 @@
 
 require_once "../model/BancoDeDados.php";
 require_once "../model/Produto.php";
+require_once "../model/Funcionario.php";
 class Controlador{
 
     private $bancoDeDados;
@@ -22,6 +23,11 @@ class Controlador{
         $this->bancoDeDados->inserirProduto($produto);
     }
 
+    public function inserirFuncionario($cpf,$nome,$sobrenome,$dataNasc,$telefone,$email,$salario){
+        $funcionario = new Funcionario($cpf,$nome,$sobrenome,$dataNasc,$telefone,$email,$salario);
+        $this->bancoDeDados->inserirFuncionario($cpf,$nome,$sobrenome,$dataNasc,$telefone,$email,$salario);
+    }
+
     public function visualizarProdutos(){
         $listaProdutos = $this->bancoDeDados->retornarProdutos();
         while($produto = mysqli_fetch_assoc($listaProdutos)){
@@ -34,14 +40,24 @@ class Controlador{
 
         }
     }
+    public function visualizarFuncionarios(){
+        $listaFuncionarios = $this->bancoDeDados->retornarFuncionarios();
+        while($funcionario = mysqli_fetch_assoc($listaFuncionarios)){
+            return "<section class =\"conteudo-bloco\">".
+            "<h2>". $funcionario["nome"] . "</h2>".
+            "<p>Sobrenome:" . $funcionario["sobrenome"] . "</p>".
+            "<p>Cpf:" . $funcionario["cpf"] . "</p>".
+            "<p>Data de Nascimento:" . $funcionario["dataNasc"] . "</p>".
+            "<p>Telefone:" . $funcionario["telefone"] . "</p>".
+            "<p>Email:" . $funcionario["email"] . "</p>".
+            "<p>Salario:" . $funcionario["salario"] . "</p>".
+            "</section>";
 
-    function inserirFuncionario($cpf, $nome, $sobrenome, $dataNasc, $telefone, $email, $salario){
-    
-        $conexao = conectarBD();
-        $consulta = "INSERT INTO funcionario (cpf, nome, sobrenome, dataNascimento, telefone, email, salario) 
-                     VALUES ('$cpf','$nome','$sobrenome','$dataNasc','$telefone','$email','$salario')";
-        mysqli_query($conexao,$consulta);
+        }
     }
+    
+
+    
     
 }
 ?>
