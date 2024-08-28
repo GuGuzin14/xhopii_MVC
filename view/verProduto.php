@@ -1,6 +1,7 @@
 <?php
     
     require_once "../controller/Controlador.php";
+    require_once "../model/BancoDeDados.php";
 
 ?>
 

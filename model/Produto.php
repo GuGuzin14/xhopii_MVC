@@ -1,4 +1,6 @@
 <?php
+
+
 class Produto{
 
 protected $nome;
@@ -41,6 +43,7 @@ public function __construct($nome,$fabricante,$descricao,$valor)
 public function aplicarCupom($cupomTaxa){
     $valorDesconto = ($this->valor*$cupomTaxa) / 100;
     $this->valor = $this->valor - $valorDesconto;
-}        
+}      
+
 
     }
