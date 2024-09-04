@@ -9,7 +9,7 @@ class Controlador{
 
     public function __construct(){
 
-        $this->bancoDeDados = new BancoDeDados("localhost","root","","xhoppi");
+        $this->bancoDeDados = new BancoDeDados("localhost","root","","xhopii");
         
     }
     /*

@@ -65,7 +65,7 @@ function retornarProdutos(){
 }
 function retornarFuncionarios(){
     $conexao = conectarBD();
-    $consulta = "SELECT * FROM funcionario";
+    $consulta = "SELECT * FROM funcionarios";
     $listaFuncionarios = mysqli_query($conexao,$consulta);
     return $listaFuncionarios;
 }
