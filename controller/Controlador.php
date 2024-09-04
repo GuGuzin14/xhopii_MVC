@@ -43,18 +43,33 @@ class Controlador{
 
     public function visualizarFuncionarios(){
         $listaFuncionarios = $this->bancoDeDados->retornarFuncionarios();
+        $resultado = '';
         while($funcionario = mysqli_fetch_assoc($listaFuncionarios)){
-            return "<section class =\"conteudo-bloco\">".
-            "<h2>". $funcionario["nome"] . "</h2>".
-            "<p>Sobrenome:" . $funcionario["sobrenome"] . "</p>".
-            "<p>Cpf:" . $funcionario["cpf"] . "</p>".
-            "<p>Data de Nascimento:" . $funcionario["dataNasc"] . "</p>".
-            "<p>Telefone:" . $funcionario["telefone"] . "</p>".
-            "<p>Email:" . $funcionario["email"] . "</p>".
-            "<p>Salario:" . $funcionario["salario"] . "</p>".
-            "</section>";
-
+            $resultado .= "<section class=\"conteudo-bloco\">";
+            $resultado .= "<h2>" . $funcionario["nome"] . " " . $funcionario["sobrenome"] . "</h2>";
+            $resultado .= "<p>CPF: " . $funcionario["cpf"] . "</p>";
+            $resultado .= "<p>Data Nascimento: " . $funcionario["dataNasc"] . "</p>";
+            $resultado .= "<p>Telefone: " . $funcionario["telefone"] . "</p>";
+            $resultado .= "<p>E-mail: " . $funcionario["email"] . "</p>";
+            $resultado .= "<p>Salario: " . $funcionario["salario"] . "</p>";
+            $resultado .= "</section>";
         }
+        return $resultado;
+    }
+
+    public function visualizarClientes(){
+        $listaClientes = $this->bancoDeDados->retornarClientes();
+        $resultado = '';
+        while($cliente = mysqli_fetch_assoc($listaClientes)){
+            $resultado .= "<section class=\"conteudo-bloco\">";
+            $resultado .= "<h2>" . $cliente["nome"] . " " . $cliente["sobrenome"] . "</h2>";
+            $resultado .= "<p>CPF: " . $cliente["cpf"] . "</p>";
+            $resultado .= "<p>Data Nascimento: " . $cliente["dataNascimento"] . "</p>";
+            $resultado .= "<p>Telefone: " . $cliente["telefone"] . "</p>";
+            $resultado .= "<p>E-mail: " . $cliente["email"] . "</p>";
+            $resultado .= "</section>";
+        }
+        return $resultado;
     }
     
 }

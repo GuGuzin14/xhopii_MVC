@@ -7,19 +7,22 @@ class BancoDeDados{
     private $dataBase;
 
 
-public function __construct($host, $login, $senha, $dataBase){
-    $this->host = $host; //Exemplo: 127.0.0.1
-
-    $this->login = $login;
-
-    $this->senha = $senha;
+    public function __construct($host, $login, $senha, $dataBase){
+        $this->host = $host; //Exemplo: 127.0.0.1
     
-    $this->dataBase = $dataBase;
-}
+        $this->login = $login;
+    
+        $this->senha = $senha;
+        
+        $this->dataBase = $dataBase;
+    }
 
 public function conectarBD(){
     $conexao = mysqli_connect($this->host, $this->login, $this->senha, $this->dataBase);
-    return($conexao);
+    if(!$conexao){
+        die("falha na conexão: " . mysqli_connect_error());
+    }
+    return $conexao;
 }
 
 public function inserirCliente($cpf, $nome, $sobrenome, $dataNasc, $telefone, $email, $senha){
@@ -49,11 +52,11 @@ function inserirFuncionario($cpf, $nome, $sobrenome, $dataNasc, $telefone, $emai
     mysqli_query($conexao,$consulta);
 }
 
-function retornarClientes(){
-
-    $conexao = conectarBD();
+public function retornarClientes(){
+    
+    $conexao = $this->conectarBD(); 
     $consulta = "SELECT * FROM cliente";
-    $listaClientes = mysqli_query($conexao,$consulta);
+    $listaClientes = mysqli_query($conexao, $consulta);
     return $listaClientes;
 }
 

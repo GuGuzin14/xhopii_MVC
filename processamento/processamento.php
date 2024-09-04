@@ -74,4 +74,5 @@ if(!empty($_POST['inputNomeProd']) && !empty($_POST['inputFabricanteProd']) &&
     die();
 }
 
+
 ?>
