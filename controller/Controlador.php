@@ -2,23 +2,17 @@
 
 require_once "../model/BancoDeDados.php";
 require_once "../model/Produto.php";
+
 class Controlador{
 
     private $bancoDeDados;
 
     public function __construct(){
-
-        $this->bancoDeDados = new BancoDeDados("localhost","root","","xhopii");
-        
+        $this->bancoDeDados = new BancoDeDados("localhost", "root", "", "xhopii");
     }
-    /*
-    public function __construct($host,$login,$senha,$dataBase){
-        $this->bancoDeDados= new BancoDeDados($host,$login,$senha,$dataBase);
-    }
-    */
 
-    public function cadastrarProduto($nome,$fabricante,$descricao,$valor){
-        $produto = new Produto($nome,$fabricante,$descricao,$valor);
+    public function cadastrarProduto($nome, $fabricante, $descricao, $valor){
+        $produto = new Produto($nome, $fabricante, $descricao, $valor);
         $this->bancoDeDados->inserirProduto($produto);
     }
 
@@ -31,7 +25,6 @@ class Controlador{
             "<p>Descrição:" . $produto["descricao"] . "</p>".
             "<p>Valor:" . $produto["valor"] . "</p>".
             "</section>";
-
         }
     }
 
@@ -49,8 +42,17 @@ class Controlador{
         }
         return $resultado;
     }
-    
-    
+
+    public function inserirCliente($cpf, $nome, $sobrenome, $dataNasc, $telefone, $email, $senha){
+        
+        $this->bancoDeDados->inserirCliente($cpf, $nome, $sobrenome, $dataNasc, $telefone, $email, $senha);
+    }
+
+    public function inserirFuncionario($cpf, $nome, $sobrenome, $dataNasc, $telefone, $email, $salario){
+        
+        $this->bancoDeDados->inserirFuncionario($cpf, $nome, $sobrenome, $dataNasc, $telefone, $email, $salario);
+    }
+
     
 }
 ?>
