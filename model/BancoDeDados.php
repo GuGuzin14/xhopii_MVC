@@ -49,13 +49,14 @@ function inserirFuncionario($cpf, $nome, $sobrenome, $dataNasc, $telefone, $emai
     mysqli_query($conexao,$consulta);
 }
 
-function retornarClientes(){
-
-    $conexao = conectarBD();
+public function retornarClientes(){
+    
+    $conexao = $this->conectarBD(); 
     $consulta = "SELECT * FROM cliente";
-    $listaClientes = mysqli_query($conexao,$consulta);
+    $listaClientes = mysqli_query($conexao, $consulta);
     return $listaClientes;
 }
+
 
 function retornarProdutos(){
     $conexao = conectarBD();
