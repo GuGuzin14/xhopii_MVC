@@ -2,6 +2,7 @@
 
 require_once "../model/BancoDeDados.php";
 require_once "../model/Produto.php";
+require_once "../model/Funcionario.php";
 class Controlador{
 
     private $bancoDeDados;
@@ -34,31 +35,6 @@ class Controlador{
 
         }
     }
-
-    public function visualizarClientes(){
-        $listaClientes = $this->bancoDeDados->retornarClientes();
-        $resultado = '';
-        while($cliente = mysqli_fetch_assoc($listaClientes)){
-            $resultado .= "<section class=\"conteudo-bloco\">";
-            $resultado .= "<h2>" . $cliente["nome"] . " " . $cliente["sobrenome"] . "</h2>";
-            $resultado .= "<p>CPF: " . $cliente["cpf"] . "</p>";
-            $resultado .= "<p>Data Nascimento: " . $cliente["dataNascimento"] . "</p>";
-            $resultado .= "<p>Telefone: " . $cliente["telefone"] . "</p>";
-            $resultado .= "<p>E-mail: " . $cliente["email"] . "</p>";
-            $resultado .= "</section>";
-        }
-        return $resultado;
-    }
-
-    function retornarClientes(){
-
-        $conexao = conectarBD();
-        $consulta = "SELECT * FROM cliente";
-        $listaClientes = mysqli_query($conexao,$consulta);
-        return $listaClientes;
-    }
-    
-    
     
 }
 ?>

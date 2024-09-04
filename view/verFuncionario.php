@@ -1,6 +1,6 @@
 <?php
     
-    require "../processamento/funcoesBD.php";
+    require "../controller/Controlador.php";
 
 ?>
 
@@ -40,7 +40,11 @@
     <section class="conteudo-visualizar">
         <section class="conteudo-visualizar-box">
             <h1>Funcionários</h1>
-            <!-- INSERIR AQUI O RESULTADO DA CONSULTA POR FUNCIONÁRIOS -->
+            <?php
+                $controlador = new Controlador();
+                $listaFuncionarios = $controlador->visualizarFuncionarios();
+                echo $listaFuncionarios;
+            ?>
         </section>
     </section>
 
