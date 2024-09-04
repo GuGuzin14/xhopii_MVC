@@ -60,6 +60,7 @@ public function retornarClientes(){
     return $listaClientes;
 }
 
+
 function retornarProdutos(){
     $conexao = conectarBD();
     $consulta = "SELECT * FROM produto";

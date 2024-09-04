@@ -38,18 +38,25 @@
     <section class="conteudo-visualizar">
         <section class="conteudo-visualizar-box">
             <h1>Clientes</h1>
-                 <?php
-                 $controlador = new Controlador();
-                 $listaClientes = $controlador->visualizarClientes();
-                 echo $listaClientes;
-                 ?>
+            <?php
+                $listaClientes = retornarClientes();
+                while($cliente = mysqli_fetch_assoc($listaClientes)){
+                    echo "<section class=\"conteudo-bloco\">";
+                    echo "<h2>" . $cliente["nome"] . " " . $cliente["sobrenome"] . "</h2>";
+                    echo "<p>CPF: " . $cliente["cpf"] . "</p>";
+                    echo "<p>Data Nascimento: " . $cliente["dataNascimento"] . "</p>";
+                    echo "<p>Telefone: " . $cliente["telefone"] . "</p>";
+                    echo "<p>E-mail: " . $cliente["email"] . "</p>";
+                    echo "</section>";
+                }
+            ?>
         </section>
     </section>
 
     <footer class="rodape-login">
         <img src="../img/footer-login.png">
         <hr>
-        <p>© 2022 Xhopii. Todos os direitos reservados</p>
+        <p>© 2024 Xhopii. Todos os direitos reservados</p>
     </footer>
 </body>
 </html>

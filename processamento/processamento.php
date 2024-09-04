@@ -1,7 +1,8 @@
 <?php
 
 session_start();
-require "Controlador.php";
+require('../controller/Controlador.php');
+
 
 $controlador = new Controlador();
 
