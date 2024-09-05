@@ -27,7 +27,7 @@ public function conectarBD(){
 
 public function inserirCliente($cpf, $nome, $sobrenome, $dataNasc, $telefone, $email, $senha){
     
-    $conexao = conectarBD();
+    $conexao = $this->conectarBD();
     $consulta = "INSERT INTO cliente (cpf, nome, sobrenome, dataNascimento, telefone, email, senha) 
                  VALUES ('$cpf','$nome','$sobrenome','$dataNasc','$telefone','$email','$senha')";
     mysqli_query($conexao,$consulta);
@@ -46,8 +46,8 @@ public function inserirProduto($produto){
 
 function inserirFuncionario($cpf, $nome, $sobrenome, $dataNasc, $telefone, $email, $salario){
     
-    $conexao = conectarBD();
-    $consulta = "INSERT INTO funcionario (cpf, nome, sobrenome, dataNascimento, telefone, email, salario) 
+    $conexao = $this->conectarBD();
+    $consulta = "INSERT INTO funcionarios (funccpf, funcnome, funcsobrenome, funcdatanas, functelefone, funcemail, funcsalario) 
                  VALUES ('$cpf','$nome','$sobrenome','$dataNasc','$telefone','$email','$salario')";
     mysqli_query($conexao,$consulta);
 }
