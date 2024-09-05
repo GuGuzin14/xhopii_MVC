@@ -35,12 +35,13 @@ public function inserirCliente($cpf, $nome, $sobrenome, $dataNasc, $telefone, $e
 
 public function inserirProduto($produto){
     
-    $conexao = conectarBD();
-    $consulta = "INSERT INTO produto (nome,fabricante, descricao, valor) 
+    $conexao = $this->conectarBD();
+    $consulta = "INSERT INTO produtos (nome,fabricante, descricao, valor, imagem) 
                  VALUES ('$produto->get_Nome()',
                         '$produto->get_Fabricante()',
                         '$produto->get_Descricao()',
-                        '$produto->get_Valor()')";
+                        '$produto->get_Valor()',
+                        '$produto->get_Imagem()')";
     mysqli_query($conexao,$consulta);
 }
 
@@ -62,8 +63,8 @@ public function retornarClientes(){
 
 
 function retornarProdutos(){
-    $conexao = conectarBD();
-    $consulta = "SELECT * FROM produto";
+    $conexao = $this->conectarBD();
+    $consulta = "SELECT * FROM produtos";
     $listaProdutos = mysqli_query($conexao,$consulta);
     return $listaProdutos;
 }
