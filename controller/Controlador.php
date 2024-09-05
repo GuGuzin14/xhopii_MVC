@@ -27,6 +27,7 @@ class Controlador{
             "</section>";
         }
     }
+    
 
     public function visualizarClientes(){
         $listaClientes = $this->bancoDeDados->retornarClientes();
@@ -38,6 +39,21 @@ class Controlador{
             $resultado .= "<p>Data Nascimento: " . $cliente["dataNascimento"] . "</p>";
             $resultado .= "<p>Telefone: " . $cliente["telefone"] . "</p>";
             $resultado .= "<p>E-mail: " . $cliente["email"] . "</p>";
+            $resultado .= "</section>";
+        }
+        return $resultado;
+    }
+    public function visualizarFuncionarios(){
+        $listaFuncionarios = $this->bancoDeDados->retornarFuncionarios();
+        $resultado = '';
+        while($funcionario = mysqli_fetch_assoc($listaFuncionarios)){
+            $resultado .= "<section class=\"conteudo-bloco\">";
+            $resultado .= "<h2>" . $funcionario["funcnome"] . " " . $funcionario["funcsobrenome"] . "</h2>";
+            $resultado .= "<p>CPF: " . $funcionario["funccpf"] . "</p>";
+            $resultado .= "<p>Data Nascimento: " . $funcionario["funcdatanas"] . "</p>";
+            $resultado .= "<p>Telefone: " . $funcionario["functelefone"] . "</p>";
+            $resultado .= "<p>E-mail: " . $funcionario["funcemail"] . "</p>";
+            $resultado .= "<p>Salario: " . $funcionario["funcsalario"] . "</p>";
             $resultado .= "</section>";
         }
         return $resultado;
