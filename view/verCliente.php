@@ -39,16 +39,9 @@
         <section class="conteudo-visualizar-box">
             <h1>Clientes</h1>
             <?php
-                $listaClientes = retornarClientes();
-                while($cliente = mysqli_fetch_assoc($listaClientes)){
-                    echo "<section class=\"conteudo-bloco\">";
-                    echo "<h2>" . $cliente["nome"] . " " . $cliente["sobrenome"] . "</h2>";
-                    echo "<p>CPF: " . $cliente["cpf"] . "</p>";
-                    echo "<p>Data Nascimento: " . $cliente["dataNascimento"] . "</p>";
-                    echo "<p>Telefone: " . $cliente["telefone"] . "</p>";
-                    echo "<p>E-mail: " . $cliente["email"] . "</p>";
-                    echo "</section>";
-                }
+                $controlador = new Controlador();
+                $listaClientes = $controlador->visualizarClientes();
+                echo $listaClientes;
             ?>
         </section>
     </section>
