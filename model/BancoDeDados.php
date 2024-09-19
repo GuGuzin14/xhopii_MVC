@@ -34,14 +34,9 @@ public function inserirCliente($cpf, $nome, $sobrenome, $dataNasc, $telefone, $e
 }
 
 public function inserirProduto($produto){
-    
     $conexao = $this->conectarBD();
-    $consulta = "INSERT INTO produtos (nome,fabricante, descricao, valor, imagem) 
-                 VALUES ('$produto->get_Nome()',
-                        '$produto->get_Fabricante()',
-                        '$produto->get_Descricao()',
-                        '$produto->get_Valor()',
-                        '$produto->get_Imagem()')";
+    $consulta = $conexao->prepare("INSERT INTO produtos (nome, fabricante, descricao, valor, quantidade, imagem) 
+    VALUES ($nome, $fabricante, $descricao, $valor, $quantidade, $imagem)");
     mysqli_query($conexao,$consulta);
 }
 

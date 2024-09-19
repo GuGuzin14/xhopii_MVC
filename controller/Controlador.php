@@ -11,8 +11,8 @@ class Controlador{
         $this->bancoDeDados = new BancoDeDados("localhost", "root", "", "xhopii");
     }
 
-    public function cadastrarProduto($nome, $fabricante, $descricao, $valor, $quantidade){
-        $produto = new Produtos($nome, $fabricante, $descricao, $valor, $quantidade);
+    public function InserirProduto($nome, $fabricante, $descricao, $valor, $quantidade, $imagem){
+        $produto = new Produto($nome, $fabricante, $descricao, $valor, $quantidade, $imagem);
         $this->bancoDeDados->inserirProduto($produto);
     }
 
@@ -26,6 +26,7 @@ class Controlador{
             $resultado .= "<p>Descrição: " . $produto["descricao"] . "</p>"; 
             $resultado .= "<p>Quantidade: " . $produto["quantidade"] . "</p>"; 
             $resultado .= "<p>Valor: " . $produto["valor"] . "</p>";
+            $resultado .= "<img src=\"data:image/jpeg;base64," . base64_encode($produto["imagem"]) . "\" style=\"width: 200px; height: 200px;\"/>";
             $resultado .= "</section>"; 
         }
         

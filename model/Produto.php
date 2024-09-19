@@ -5,16 +5,18 @@ protected $nome;
 protected $fabricante;
 protected $descricao;
 protected $valor;
+protected $quantidade;
 protected $imagem;
 
-public function __construct($nome,$fabricante,$descricao,$valor,$imagem)
+public function __construct($nome, $fabricante, $descricao, $valor, $quantidade, $imagem)
 {
     $this->nome = $nome;
     $this->fabricante = $fabricante;
     $this->descricao = $descricao;
-    $this->valor = $valor;    
-    $this->quantidade = $quantidade;    
-    $this->imagem = $imagem;    
+    $this->quantidade = $quantidade;
+    $this->valor = $valor;
+    $this->imagem = $imagem;
+    
 }
 
         public function get_Nome(){
@@ -40,12 +42,22 @@ public function __construct($nome,$fabricante,$descricao,$valor,$imagem)
         public function get_valor(){
             return ($this->valor);
         }
+        public function set_valor($valor){
+            $this->valor = $valor;
+        }
         public function set_quantidade($quantidade){
             $this->quantidade = $quantidade;
         }
         public function get_quantidade(){
             return ($this->quantidade);
         }
+        public function getImagem(){
+            return ($this->imagem);
+        }
+        public function setImagem($imagem){
+            $this->imagem = $imagem;
+        }
+
 
 public function aplicarCupom($cupomTaxa){
     $valorDesconto = ($this->valor*$cupomTaxa) / 100;
