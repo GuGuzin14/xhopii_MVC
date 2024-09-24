@@ -35,6 +35,34 @@
         <img src="../img/home.png">
     </section>
 
+    <section class="conteudo-bloco">
+        <h2>Produtos</h2>
+        <div class="grid-container">
+            <?php
+                require('../controller/Controlador.php');
+                $controlador = new Controlador();
+                echo $controlador->visualizarProdutos();
+            ?>
+        </div>
+    </section>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+
+        .grid-container div {
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            padding: 20px;
+            text-align: center;
+            margin: 0 auto; /* Center the content inside the grid item */
+        }
+    </style>
+
     <footer class="rodape-login">
         <img src="../img/footer-login.png">
         <hr>

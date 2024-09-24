@@ -33,11 +33,25 @@ public function inserirCliente($cpf, $nome, $sobrenome, $dataNasc, $telefone, $e
     mysqli_query($conexao,$consulta);
 }
 
-public function inserirProduto($produto){
+function inserirProduto($nome, $fabricante, $descricao, $quantidade, $valor, $imagem) {
+    
     $conexao = $this->conectarBD();
-    $consulta = $conexao->prepare("INSERT INTO produtos (nome, fabricante, descricao, valor, quantidade, imagem) 
-    VALUES ($nome, $fabricante, $descricao, $valor, $quantidade, $imagem)");
-    mysqli_query($conexao,$consulta);
+    $consulta = $conexao->prepare("INSERT INTO produtos (nome, fabricante, descricao, quantidade, valor, imagem) VALUES (?, ?, ?, ?, ?, ?)");
+    $null = NULL;
+    $consulta->bind_param("sssiib", $nome, $fabricante, $descricao, $quantidade, $valor, $null);
+    $consulta->send_long_data(5, $imagem);
+
+    if ($consulta->execute()) {
+        echo "Produto cadastrado com sucesso!";
+    } else {
+        echo "Erro ao cadastrar produto: " . $consulta->error;
+    }
+
+    $consulta->close();
+    $conexao->close();
+
+    header('Location: ../view/cadastroProduto.php');
+    die();
 }
 
 function inserirFuncionario($cpf, $nome, $sobrenome, $dataNasc, $telefone, $email, $salario){
@@ -55,7 +69,6 @@ public function retornarClientes(){
     $listaClientes = mysqli_query($conexao, $consulta);
     return $listaClientes;
 }
-
 
 function retornarProdutos(){
     $conexao = $this->conectarBD();

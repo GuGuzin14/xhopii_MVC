@@ -12,8 +12,8 @@ class Controlador{
     }
 
     public function InserirProduto($nome, $fabricante, $descricao, $valor, $quantidade, $imagem){
-        $produto = new Produto($nome, $fabricante, $descricao, $valor, $quantidade, $imagem);
-        $this->bancoDeDados->inserirProduto($produto);
+
+        $this->bancoDeDados->inserirProduto($nome, $fabricante, $descricao, $valor, $quantidade, $imagem);
     }
 
     public function visualizarProdutos(){

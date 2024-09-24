@@ -66,24 +66,26 @@ if (!empty($_POST['nome']) && !empty($_POST['fabricante']) &&
      !empty($_POST['valor'])) {
 
     if (isset($_FILES['imagem']) && is_uploaded_file($_FILES['imagem']['tmp_name'])) {
-        $imgData = file_get_contents($_FILES['imagem']['tmp_name']);
+        $imagem = file_get_contents($_FILES['imagem']['tmp_name']);
 
         $nome = $_POST['nome'];
         $fabricante = $_POST['fabricante'];
         $descricao = $_POST['descricao'];
-        $quantidade = (int) $_POST['quantidade'];
-        $valor = (float) $_POST['valor'];
+        $quantidade = $_POST['quantidade'];
+        $valor = $_POST['valor'];
 
-        $controlador->InserirProduto($nome, $fabricante, $descricao, $quantidade, $valor, $imgData);
-
-        header('Location:../view/cadastroProduto.php');
-        die();
+        if ($controlador->InserirProduto($nome, $fabricante, $descricao, $quantidade, $valor, $imagem)) {
+            header('Location:../view/cadastroProduto.php');
+            die();
+        } else {
+            echo "Erro ao inserir produto no banco de dados.";
+        }
     } else {
         echo "Erro no upload da imagem.";
     }
-    } else {
+} else {
     echo "Preencha todos os campos.";
-    }
+}
 
 
 
